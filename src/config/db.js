@@ -1,11 +1,12 @@
 const mysql = require('mysql2');
+require('dotenv').config(); // garante que as variáveis do .env sejam carregadas
 
 const connection = mysql.createConnection({
-    host: 'localhost',
-    port: 3306,
-    user: 'root',
-    password: '',
-    database: 'ecommerce'
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE
 });
 
 connection.connect((err) => {
@@ -14,6 +15,6 @@ connection.connect((err) => {
     } else {
         console.log('Conexão ao banco de dados bem-sucedida!');
     }
-})
+});
 
 module.exports = connection;
