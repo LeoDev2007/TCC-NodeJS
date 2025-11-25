@@ -38,9 +38,6 @@ app.post(`${rotaClientes}`, clienteController.adicionarClienteComEndereco);
 // Login
 app.post(`${rotaClientes}/login`, clienteController.login);
 
-// Subrotas de consulta de endereços (somente GET)
-app.get(`${rotaClientes}/enderecos`, enderecoController.listarEnderecos);
-app.get(`${rotaClientes}/enderecos/:id`, enderecoController.getEnderecoById);
 
 // Rotas de Produtos
 app.get(`${rotaProdutos}`, produtoController.listarProdutos);
