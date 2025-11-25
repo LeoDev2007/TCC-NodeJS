@@ -5,7 +5,7 @@ const pool = mysql.createPool({
   host: 'trolley.proxy.rlwy.net',
   user: 'root',
   password: 'yziSqqleyeiDoRqbfxCGpnpyFIrYYEbL',
-  database: 'railway',
+  database: 'ecommerce ',
   port: 25429,
   ssl: {
     rejectUnauthorized: false,  // Permite conexões SSL
