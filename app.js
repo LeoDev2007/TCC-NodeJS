@@ -1,5 +1,4 @@
 const clienteController = require('./src/controllers/clienteController');
-const enderecoController = require('./src/controllers/EnderecoController');
 const produtoController = require('./src/controllers/produtoController');
 const express = require('express');
 const cors = require('cors');
