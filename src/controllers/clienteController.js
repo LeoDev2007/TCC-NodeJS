@@ -8,8 +8,8 @@ exports.teste = (req, res) => {
 // Listar todos os clientes
 exports.listarClientes = async (req, res) => {
     try {
-        const clients = await Client.getAllClients();  // Espera a lista de clientes
-        res.status(200).json(clients);  // Retorna a lista de clientes
+        const clients = await Client.getAllClients();
+        res.status(200).json(clients);
     } catch (err) {
         console.error('Erro ao listar clientes:', err);
         res.status(500).json({ error: 'Erro ao listar clientes' });
@@ -20,11 +20,11 @@ exports.listarClientes = async (req, res) => {
 exports.getClienteById = async (req, res) => {
     const clientId = req.params.id;
     try {
-        const client = await Client.getClienteById(clientId);  // Espera o cliente pelo ID
+        const client = await Client.getClienteById(clientId);
         if (!client) {
             return res.status(404).json({ error: 'Cliente não encontrado' });
         }
-        res.status(200).json(client);  // Retorna o cliente encontrado
+        res.status(200).json(client);
     } catch (err) {
         console.error('Erro ao buscar cliente por ID:', err);
         res.status(500).json({ error: 'Erro ao buscar cliente' });
@@ -39,7 +39,7 @@ exports.adicionarClienteComEndereco = async (req, res) => {
         nome,
         username,
         email,
-        senha,  // Será criptografado no model
+        senha,  // O model criptografa
         idade,
         telefone,
         cep,
@@ -51,8 +51,8 @@ exports.adicionarClienteComEndereco = async (req, res) => {
     };
 
     try {
-        const result = await Client.addClient(novoCliente);  // Adiciona o novo cliente
-        res.status(201).json({ id: result.insertId, ...novoCliente });  // Retorna o novo cliente com o ID
+        const result = await Client.addClient(novoCliente);
+        res.status(201).json({ id: result.insertId, ...novoCliente });
     } catch (err) {
         console.error('Erro ao adicionar cliente:', err);
         res.status(500).json({ error: 'Erro ao adicionar cliente' });
@@ -68,7 +68,6 @@ exports.login = async (req, res) => {
     }
 
     try {
-        // Agora o model faz tudo: busca e verifica senha
         const cliente = await Client.login(loginInput, senha);
 
         if (!cliente) {
@@ -76,6 +75,7 @@ exports.login = async (req, res) => {
         }
 
         res.json({ message: 'Login bem-sucedido', cliente });
+
     } catch (err) {
         console.error('Erro ao fazer login:', err);
         res.status(500).json({ error: 'Erro ao fazer login' });
