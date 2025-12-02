@@ -33,7 +33,7 @@ app.get(`${rotaClientes}`, clienteController.listarClientes);
 app.get(`${rotaClientes}/:id`, clienteController.getClienteById);
 
 // ✅ Cadastro unificado de cliente + endereço
-app.post(`${rotaClientes}`, clienteController.adicionarClienteComEndereco);
+app.post(`${rotaClientes}/cadastro`, clienteController.adicionarClienteComEndereco);
 
 // Login
 app.post(`${rotaClientes}/login`, clienteController.login);
